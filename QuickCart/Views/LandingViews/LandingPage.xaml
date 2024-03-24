@@ -4,7 +4,9 @@
              x:Class="QuickCart.Views.LandingViews.LandingPage"
              Title="LandingPage"
              NavigationPage.HasNavigationBar="False">
-    <Grid RowDefinitions="Auto, *">
+
+    <!--https://coolors.co/5465ff-788bff-9bb1ff-bfd7ff-e2fdff-->
+    <Grid RowDefinitions="Auto, *, Auto">
         <Frame Grid.Row="0" HeightRequest="65" BackgroundColor="#5465FF" CornerRadius="0">
             <HorizontalStackLayout Spacing="10">
                 <Image Source="basket.png" HeightRequest="20"/>
@@ -15,5 +17,29 @@
         <ScrollView Grid.Row="1">
             <Label Text="Hello"/>
         </ScrollView>
+
+        <Frame Margin="0" Padding="0" Grid.Row="2" HeightRequest="65" BackgroundColor="#5465FF" CornerRadius="0">
+            <Grid ColumnDefinitions="*,*,*">
+                <Frame Grid.Column="0" Margin="0" Padding="0" BackgroundColor="#5465FF" BorderColor="#5465FF">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer/>
+                    </Frame.GestureRecognizers>
+                    <Image x:Name="LandingPageImage" Source="home_active.png" HeightRequest="25"/>
+                </Frame >
+                <Frame Grid.Column="1" Margin="0" Padding="0" BackgroundColor="#5465FF" BorderColor="#5465FF">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer/>
+                    </Frame.GestureRecognizers>
+                    <Image x:Name="CategoriesPageImage" Source="category_inactive.png" HeightRequest="25"/>
+                </Frame>
+                <Frame Grid.Column="2" Margin="0" Padding="0" BackgroundColor="#5465FF" BorderColor="#5465FF">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer/>
+                    </Frame.GestureRecognizers>
+                    <Image x:Name="SettingsPageImage" Source="settings_inactive.png" HeightRequest="25"/>
+                </Frame>
+            </Grid>
+
+        </Frame>
     </Grid>
 </ContentPage>
