@@ -1,2 +1,2 @@
 # QuickCart
-Mobile shop app
+Mobile shopping app using .NET MAUI, MySQL & .NET Core WebAPI.
