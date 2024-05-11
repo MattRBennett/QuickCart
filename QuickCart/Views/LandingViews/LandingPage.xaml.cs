@@ -1,6 +1,8 @@
 using System.Drawing;
 using System.Resources;
 using System.Collections.Generic;
+using QuickCart.Services;
+using QuickCart.Services.RestServices;
 
 namespace QuickCart.Views.LandingViews;
 
@@ -12,11 +14,13 @@ public partial class LandingPage : ContentPage
 
 	}
 
-    //protected override void OnAppearing()
-    //{
-    //    base.OnAppearing();
+    protected override async void OnAppearing()
+    {
+        base.OnAppearing();
 
-    //    LandingPageImage.Source = "home_active.png";
+        CategoriesRestServices restServices = new CategoriesRestServices();
 
-    //}
+        var menuitems = await restServices.GetMenuItemsByCategoryID(2);
+
+    }
 }
