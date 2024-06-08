@@ -52,5 +52,30 @@ namespace QuickCart.Services.RestServices
 
             return menuItems;
         }
+
+        public List<Categories> categories { get; private set; }
+        public async Task<List<Categories>> GetMenuCategories()
+        {
+            categories = new List<Categories>();
+            Uri uri = new(string.Format(Constants.restURLIOS + $"Categories/GetCategories", string.Empty));
+
+            try
+            {
+                HttpResponseMessage response = await client.GetAsync(uri);
+                if (response.IsSuccessStatusCode)
+                {
+                    string content = await response.Content.ReadAsStringAsync();
+                    var Formatted = content.Remove(0, 9);
+                    var FormatedFinal = Formatted.Split(",\"formatters\":[],\"contentTypes\":[],\"declaredType\":null,\"statusCode\":200}");
+                    categories = JsonConvert.DeserializeObject<List<Categories>>(content);
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+            }
+
+            return categories;
+        }
     }
 }

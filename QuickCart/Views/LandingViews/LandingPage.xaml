@@ -14,8 +14,8 @@
             </HorizontalStackLayout>
         </Frame>
 
-        <Grid Grid.Row="1" ColumnDefinitions="3*, Auto, 5*">
-            <Grid Grid.Column="0" RowDefinitions="*, *">
+        <Grid Grid.Row="1" ColumnDefinitions="Auto, Auto, *">
+            <Grid Grid.Column="0" RowDefinitions="*, *" MinimumWidthRequest="600">
                 <Grid Grid.Row="0" BackgroundColor="Black" Padding="5">
                     <Grid RowDefinitions="Auto, *, Auto" Padding="5" BackgroundColor="#343a40">
                         <StackLayout Grid.Row="0">
@@ -63,23 +63,45 @@
                     </Grid>
                 </Grid>
             </Grid>
-            <Grid Grid.Column="1">
-                <ScrollView Padding="5" BackgroundColor="Black">
-                    <StackLayout Spacing="5" BackgroundColor="#343a40" Padding="5">
-                        <Button Text="Cold Beverages" CornerRadius="0" TextColor="White" BackgroundColor="#788BFF" FontAttributes="Bold" FontSize="20" HeightRequest="100" WidthRequest="300"/>
-                        <Button Text="Hot Beverages" CornerRadius="0" TextColor="White" BackgroundColor="#788BFF" FontAttributes="Bold" FontSize="20" HeightRequest="100" WidthRequest="300"/>
-                        <Button Text="Breakfast" CornerRadius="0" TextColor="White" BackgroundColor="#788BFF" FontAttributes="Bold" FontSize="20" HeightRequest="100" WidthRequest="300"/>
-                        <Button Text="Chicken" CornerRadius="0" TextColor="White" BackgroundColor="#788BFF" FontAttributes="Bold" FontSize="20" HeightRequest="100" WidthRequest="300"/>
-                        <Button Text="Beef" CornerRadius="0" TextColor="White" BackgroundColor="#788BFF" FontAttributes="Bold" FontSize="20" HeightRequest="100" WidthRequest="300"/>
-                        <Button Text="Pork" CornerRadius="0" TextColor="White" BackgroundColor="#788BFF" FontAttributes="Bold" FontSize="20" HeightRequest="100" WidthRequest="300"/>
-                        <Button Text="Desserts" CornerRadius="0" TextColor="White" BackgroundColor="#788BFF" FontAttributes="Bold" FontSize="20" HeightRequest="100" WidthRequest="300"/>
-                        <Button Text="Sides" CornerRadius="0" TextColor="White" BackgroundColor="#788BFF" FontAttributes="Bold" FontSize="20" HeightRequest="100" WidthRequest="300"/>
+            <Grid Grid.Column="1" >
+                <ScrollView Padding="5" BackgroundColor="Black" HorizontalOptions="Center" VerticalOptions="Center" MinimumWidthRequest="200">
+                    <StackLayout BackgroundColor="#343a40" Padding="5" HorizontalOptions="Center" VerticalOptions="Center">
+                        <CollectionView x:Name="CategoryCollectionView">
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    
+                                        <Button HorizontalOptions="Center" VerticalOptions="Center" Margin="5" Clicked="CategoryItem_Clicked" Text="{Binding CategoryName}" CornerRadius="0" TextColor="White" BackgroundColor="#788BFF" FontAttributes="Bold" FontSize="20" MinimumHeightRequest="100" WidthRequest="300"/>
+                                    
+                                    
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                        
+                        
                     </StackLayout>
                 </ScrollView>
             </Grid>
             <Grid Grid.Column="2">
+                <ScrollView Padding="5" BackgroundColor="Black">
+                    <Grid BackgroundColor="#343a40" HorizontalOptions="CenterAndExpand">
+                        <CollectionView x:Name="MenuItemsCollectionView">
+                            <CollectionView.ItemsLayout>
+                                <GridItemsLayout Orientation="Vertical" Span="2"/>
+                            </CollectionView.ItemsLayout>
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
 
+                                    <Button Clicked="MenuItem_Clicked" Text="{Binding Name}" CornerRadius="0" TextColor="White" BackgroundColor="#788BFF" FontAttributes="Bold" FontSize="20" MinimumHeightRequest="100" Margin="5"/>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+
+
+                    </Grid>
+                </ScrollView>
             </Grid>
+            
+            
         </Grid>
 
         <Frame Margin="0" Padding="0" Grid.Row="2" HeightRequest="65" BackgroundColor="#5465FF" CornerRadius="0">
